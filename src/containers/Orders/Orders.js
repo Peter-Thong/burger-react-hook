@@ -7,9 +7,11 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Orders = (props) => {
+  const { onFetchOrders } = props;
+  const { token, userId } = props;
   useEffect(() => {
-    props.onFetchOrders(props.token, props.userId);
-  }, []);
+    onFetchOrders(token, userId);
+  }, [onFetchOrders, token, userId]);
 
   let order = <Spinner />;
   if (!props.loading) {
